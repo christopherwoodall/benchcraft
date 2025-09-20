@@ -1,0 +1,103 @@
+import os
+import json
+import re
+from flask import Flask, render_template, request, jsonify
+
+# Initialize Flask App
+app = Flask(__name__)
+
+# Define the directory to store benchmark JSON files
+BENCHMARKS_DIR = "benchmarks"
+if not os.path.exists(BENCHMARKS_DIR):
+    os.makedirs(BENCHMARKS_DIR)
+
+def sanitize_filename(name):
+    """Sanitizes a string to be used as a filename."""
+    name = re.sub(r'[^\w\s-]', '', name).strip().lower()
+    name = re.sub(r'[-\s]+', '-', name)
+    return name
+
+@app.route('/')
+def index():
+    """Renders the main HTML page."""
+    return render_template('index.html')
+
+@app.route('/api/benchmarks', methods=['GET'])
+def get_benchmarks():
+    """Lists all available benchmark files."""
+    try:
+        files = [f for f in os.listdir(BENCHMARKS_DIR) if f.endswith('.json')]
+        benchmarks = []
+        for filename in files:
+            try:
+                with open(os.path.join(BENCHMARKS_DIR, filename), 'r') as f:
+                    data = json.load(f)
+                    benchmarks.append({
+                        "filename": filename,
+                        "name": data.get("name", "Untitled Benchmark")
+                    })
+            except (IOError, json.JSONDecodeError):
+                # Skip corrupted or unreadable files
+                continue
+        return jsonify(benchmarks)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/benchmarks', methods=['POST'])
+def save_benchmark():
+    """Saves a new or existing benchmark."""
+    try:
+        data = request.get_json()
+        if not data or 'name' not in data or not data['name']:
+            return jsonify({"error": "Benchmark name is required."}), 400
+
+        filename = sanitize_filename(data['name']) + '.json'
+        filepath = os.path.join(BENCHMARKS_DIR, filename)
+
+        with open(filepath, 'w') as f:
+            json.dump(data, f, indent=4)
+
+        return jsonify({
+            "message": "Benchmark saved successfully.",
+            "filename": filename
+        }), 201
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/benchmarks/<filename>', methods=['GET'])
+def get_benchmark(filename):
+    """Loads a specific benchmark file."""
+    try:
+        # Security: Ensure filename is safe
+        if not re.match(r'^[\w-]+\.json$', filename):
+            return jsonify({"error": "Invalid filename"}), 400
+        
+        filepath = os.path.join(BENCHMARKS_DIR, filename)
+        if not os.path.exists(filepath):
+            return jsonify({"error": "Benchmark not found."}), 404
+
+        with open(filepath, 'r') as f:
+            data = json.load(f)
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/benchmarks/<filename>', methods=['DELETE'])
+def delete_benchmark(filename):
+    """Deletes a specific benchmark file."""
+    try:
+        # Security: Ensure filename is safe
+        if not re.match(r'^[\w-]+\.json$', filename):
+            return jsonify({"error": "Invalid filename"}), 400
+
+        filepath = os.path.join(BENCHMARKS_DIR, filename)
+        if os.path.exists(filepath):
+            os.remove(filepath)
+            return jsonify({"message": "Benchmark deleted successfully."})
+        else:
+            return jsonify({"error": "Benchmark not found."}), 404
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+if __name__ == '__main__':
+    app.run(debug=True)
