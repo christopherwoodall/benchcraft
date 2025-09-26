@@ -178,17 +178,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const createPromptElement = (user = '', answer = '') => {
+    const createPromptElement = (input = '', target = '', choices = '', metadata = '') => {
         const div = document.createElement('div');
         div.className = 'p-4 bg-gray-700 rounded-lg prompt-pair';
         div.innerHTML = `
             <div class="flex justify-between items-center mb-2">
-                <h4 class="font-semibold text-gray-300">Question</h4>
+                <h4 class="font-semibold text-gray-300">Sample</h4>
                 <button class="remove-prompt-btn text-red-400 hover:text-red-500 font-bold text-sm">Remove</button>
             </div>
             <div class="space-y-2">
-                <textarea rows="3" placeholder="User Question / Prompt" class="user-prompt w-full bg-gray-600 rounded-md p-2 text-sm">${user}</textarea>
-                <textarea rows="3" placeholder="Ideal Answer" class="expected-answer w-full bg-gray-600 rounded-md p-2 text-sm">${answer}</textarea>
+                <textarea rows="3" placeholder="Input / Prompt" class="sample-input w-full bg-gray-600 rounded-md p-2 text-sm">${input}</textarea>
+                <textarea rows="3" placeholder="Target / Ideal Answer" class="sample-target w-full bg-gray-600 rounded-md p-2 text-sm">${target}</textarea>
+                <input type="text" placeholder="Choices (comma separated)" value="${choices}" class="sample-choices w-full bg-gray-600 rounded-md p-2 text-sm">
+                <textarea rows="2" placeholder="Metadata (JSON or key:value)" class="sample-metadata w-full bg-gray-600 rounded-md p-2 text-sm">${metadata}</textarea>
             </div>
         `;
         promptsList.appendChild(div);
@@ -201,10 +203,19 @@ document.addEventListener('DOMContentLoaded', () => {
         form.revision.value = data.revision || '';
         form.systemPrompt.value = data.systemPrompt || '';
         
-        // Clear and set prompts
+        // Clear and rebuild sample fields
         promptsList.innerHTML = '';
-        if (data.prompts) {
-            data.prompts.forEach(p => createPromptElement(p.user, p.answer));
+        if (data.samples) {
+            data.samples.forEach(s => {
+                createPromptElement(
+                    s.input || '',
+                    s.target || '',
+                    s.choices ? s.choices.join(', ') : '',
+                    s.metadata ? JSON.stringify(s.metadata, null, 2) : ''
+                );
+            });
+        } else {
+            createPromptElement();
         }
 
         form.formTitle.textContent = `Editing: ${data.name}`;
@@ -249,10 +260,37 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const handleSaveBenchmark = async () => {
-        const prompts = Array.from(document.querySelectorAll('.prompt-pair')).map(div => ({
-            user: div.querySelector('.user-prompt').value,
-            answer: div.querySelector('.expected-answer').value
-        }));
+        const samples = Array.from(document.querySelectorAll('.prompt-pair')).map((div, i) => {
+            const input = div.querySelector('.sample-input').value;
+            const target = div.querySelector('.sample-target').value;
+            const rawChoices = div.querySelector('.sample-choices').value;
+            const rawMetadata = div.querySelector('.sample-metadata').value;
+
+            let choices = rawChoices ? rawChoices.split(',').map(c => c.trim()) : null;
+            let metadata = null;
+            try {
+                metadata = rawMetadata ? JSON.parse(rawMetadata) : null;
+            } catch {
+                if (rawMetadata.includes(':')) {
+                    metadata = Object.fromEntries(
+                        rawMetadata.split(',').map(pair => {
+                            const [k, v] = pair.split(':').map(x => x.trim());
+                            return [k, v];
+                        })
+                    );
+                }
+            }
+
+            return {
+                id: i + 1,
+                input,
+                target,
+                choices,
+                metadata,
+                files: null,
+                setup: null
+            };
+        });
 
         if (!form.name.value.trim()) {
             showToast("Evaluation Name cannot be empty.", true);
@@ -265,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
             author: form.author.value,
             revision: form.revision.value,
             systemPrompt: form.systemPrompt.value,
-            prompts: prompts,
+            samples
         };
         
         try {
@@ -279,6 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
             showToast(error.message, true);
         }
     };
+
 
     const handleDeleteBenchmark = async () => {
         const filename = form.currentFilename.value;
