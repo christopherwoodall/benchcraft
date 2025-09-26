@@ -1,7 +1,7 @@
 # Eval Editor
 
 
-![Eval Editor Screenshot](image.png)
+![Eval Editor Screenshot](.github/docs/image.png)
 
 
 ## Features
