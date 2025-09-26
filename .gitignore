@@ -1,5 +1,5 @@
 benchmarks/*
-!benchmarks/.gitkeep
+!benchmarks/example-eval.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
