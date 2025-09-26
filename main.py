@@ -70,9 +70,6 @@ def save_benchmark():
                 "choices": s.get("choices", None),
                 "target": s.get("target", ""),
                 "metadata": s.get("metadata", None),
-                "sandbox": s.get("sandbox", None),
-                "files": s.get("files", None),
-                "setup": s.get("setup", None),
             })
 
         # Full benchmark JSON
