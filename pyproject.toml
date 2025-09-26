@@ -9,7 +9,7 @@ benchcraft-test = "benchcraft.main:main"
 
 [project]
 requires-python = ">=3.10"
-version = "0.0.1"
+version = "0.0.2"
 name        = "benchcraft"
 description = "Craft and run benchmarks."
 readme      = ".github/README.md"
@@ -25,11 +25,7 @@ dependencies = [
     "flask",
     "openai",
     "tqdm",
-    "celery",
-    "redis",
     "sqlalchemy",
-    "black",
-    "ruff",
 ]
 
 [project.optional-dependencies]
