@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eval Editor</title>
+    <title>benchcraft</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -18,7 +18,6 @@
 </head>
 <body class="bg-gray-900 text-white">
     <div class="flex h-screen">
-        <!-- Sidebar -->
         <aside class="w-64 bg-gray-800 p-4 overflow-y-auto flex flex-col">
             <div>
                 <h1 class="text-xl font-bold mb-4">Benchmarks</h1>
@@ -28,13 +27,15 @@
                 <nav id="benchmark-list" class="space-y-2"></nav>
             </div>
             <div class="mt-auto pt-4">
-                 <a href="/runner" class="w-full text-center block bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200">
-                    Go to Runners &rarr;
+                 <a href="/results" class="w-full text-center block bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200 mb-2">
+                    Results &rarr;
+                </a>
+                <a href="/runner" class="w-full text-center block bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200">
+                    Runners &rarr;
                 </a>
             </div>
         </aside>
 
-        <!-- Main Content -->
         <main class="flex-1 p-8 overflow-y-auto">
             <div class="max-w-4xl mx-auto">
                 <div class="flex justify-between items-center mb-6">
@@ -45,10 +46,8 @@
                     </div>
                 </div>
 
-                <!-- Hidden field for current filename -->
                 <input type="hidden" id="current-filename">
 
-                <!-- Benchmark Metadata -->
                 <div class="bg-gray-800 p-6 rounded-lg mb-6">
                     <h3 class="text-xl font-semibold mb-4 border-b border-gray-700 pb-2">Metadata</h3>
                     <div class="space-y-4">
@@ -73,7 +72,6 @@
                     </div>
                 </div>
 
-                <!-- System Prompt -->
                 <div class="bg-gray-800 p-6 rounded-lg mb-6">
                     <h3 class="text-xl font-semibold mb-4 border-b border-gray-700 pb-2">Shared System Prompt</h3>
                     <div>
@@ -82,21 +80,18 @@
                     </div>
                 </div>
 
-                <!-- Prompts -->
                 <div class="bg-gray-800 p-6 rounded-lg">
                     <div class="flex justify-between items-center mb-4 border-b border-gray-700 pb-2">
                         <h3 class="text-xl font-semibold">Evaluation Questions</h3>
                         <button id="add-prompt-btn" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-1 px-3 rounded-lg text-sm transition duration-200">+ Add Question</button>
                     </div>
                     <div id="prompts-list" class="space-y-4">
-                        <!-- Prompt pairs will be injected here -->
-                    </div>
+                        </div>
                 </div>
             </div>
         </main>
     </div>
 
-    <!-- Toast Notification -->
     <div id="toast" class="fixed bottom-5 right-5 bg-gray-800 text-white py-2 px-4 rounded-lg shadow-lg transition-opacity duration-300 opacity-0">
         <p id="toast-message"></p>
     </div>
@@ -150,16 +145,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(data),
             });
             if (!response.ok) {
-                 const error = await response.json();
-                 throw new Error(error.error || 'Failed to save benchmark.');
+                const error = await response.json();
+                throw new Error(error.error || 'Failed to save benchmark.');
             }
             return response.json();
         },
         deleteBenchmark: async (filename) => {
             const response = await fetch(`/api/benchmarks/${filename}`, { method: 'DELETE' });
              if (!response.ok) {
-                 const error = await response.json();
-                 throw new Error(error.error || 'Failed to delete benchmark.');
+                const error = await response.json();
+                throw new Error(error.error || 'Failed to delete benchmark.');
             }
             return response.json();
         }
