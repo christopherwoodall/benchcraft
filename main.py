@@ -3,13 +3,16 @@ import json
 import re
 from flask import Flask, render_template, request, jsonify
 
+
 # Initialize Flask App
 app = Flask(__name__)
+
 
 # Define the directory to store benchmark JSON files
 BENCHMARKS_DIR = "benchmarks"
 if not os.path.exists(BENCHMARKS_DIR):
     os.makedirs(BENCHMARKS_DIR)
+
 
 def sanitize_filename(name):
     """Sanitizes a string to be used as a filename."""
@@ -17,10 +20,12 @@ def sanitize_filename(name):
     name = re.sub(r'[-\s]+', '-', name)
     return name
 
+
 @app.route('/')
 def index():
     """Renders the main HTML page."""
     return render_template('index.html')
+
 
 @app.route('/api/benchmarks', methods=['GET'])
 def get_benchmarks():
@@ -43,19 +48,45 @@ def get_benchmarks():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+
 @app.route('/api/benchmarks', methods=['POST'])
 def save_benchmark():
-    """Saves a new or existing benchmark."""
+    """Saves a new or existing benchmark in Sample-compatible format."""
     try:
         data = request.get_json()
         if not data or 'name' not in data or not data['name']:
             return jsonify({"error": "Benchmark name is required."}), 400
 
-        filename = sanitize_filename(data['name']) + '.json'
+        # Required benchmark-level metadata
+        benchmark_name = data['name']
+        samples = data.get("samples", [])
+
+        # Normalize samples to fit the Sample model schema
+        formatted_samples = []
+        for i, s in enumerate(samples, start=1):
+            formatted_samples.append({
+                "id": s.get("id", i),  # fallback to index
+                "input": s.get("input", ""),  # string or list of ChatMessage dicts
+                "choices": s.get("choices", None),
+                "target": s.get("target", ""),
+                "metadata": s.get("metadata", None),
+                "sandbox": s.get("sandbox", None),
+                "files": s.get("files", None),
+                "setup": s.get("setup", None),
+            })
+
+        # Full benchmark JSON
+        benchmark_payload = {
+            "name": benchmark_name,
+            "samples": formatted_samples
+        }
+
+        # Save to disk
+        filename = sanitize_filename(benchmark_name) + '.json'
         filepath = os.path.join(BENCHMARKS_DIR, filename)
 
         with open(filepath, 'w') as f:
-            json.dump(data, f, indent=4)
+            json.dump(benchmark_payload, f, indent=4)
 
         return jsonify({
             "message": "Benchmark saved successfully.",
@@ -63,6 +94,7 @@ def save_benchmark():
         }), 201
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
 
 @app.route('/api/benchmarks/<filename>', methods=['GET'])
 def get_benchmark(filename):
@@ -82,6 +114,7 @@ def get_benchmark(filename):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+
 @app.route('/api/benchmarks/<filename>', methods=['DELETE'])
 def delete_benchmark(filename):
     """Deletes a specific benchmark file."""
@@ -98,6 +131,7 @@ def delete_benchmark(filename):
             return jsonify({"error": "Benchmark not found."}), 404
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
 
 if __name__ == '__main__':
     app.run(debug=True)
