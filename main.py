@@ -24,7 +24,7 @@ def sanitize_filename(name):
 @app.route("/")
 def index():
     """Renders the main HTML page."""
-    return render_template("templates/index.html")
+    return render_template("index.html")
 
 
 @app.route("/api/benchmarks", methods=["GET"])
