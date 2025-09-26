@@ -19,12 +19,19 @@
 <body class="bg-gray-900 text-white">
     <div class="flex h-screen">
         <!-- Sidebar -->
-        <aside class="w-64 bg-gray-800 p-4 overflow-y-auto">
-            <h1 class="text-xl font-bold mb-4">Benchmarks</h1>
-            <button id="new-benchmark-btn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg mb-4 transition duration-200">
-                + New Eval
-            </button>
-            <nav id="benchmark-list" class="space-y-2"></nav>
+        <aside class="w-64 bg-gray-800 p-4 overflow-y-auto flex flex-col">
+            <div>
+                <h1 class="text-xl font-bold mb-4">Benchmarks</h1>
+                <button id="new-benchmark-btn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg mb-4 transition duration-200">
+                    + New Benchmark
+                </button>
+                <nav id="benchmark-list" class="space-y-2"></nav>
+            </div>
+            <div class="mt-auto pt-4">
+                 <a href="/runner" class="w-full text-center block bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200">
+                    Go to Runners &rarr;
+                </a>
+            </div>
         </aside>
 
         <!-- Main Content -->
