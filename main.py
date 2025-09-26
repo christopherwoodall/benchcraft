@@ -27,6 +27,12 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/runner")
+def runner_page():
+    """Renders the new runner and results page."""
+    return render_template("runner.html")
+
+
 @app.route("/api/benchmarks", methods=["GET"])
 def get_benchmarks():
     """Lists all available benchmark files."""
