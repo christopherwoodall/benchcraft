@@ -37,10 +37,12 @@ def get_benchmarks():
             try:
                 with open(os.path.join(BENCHMARKS_DIR, filename), "r") as f:
                     data = json.load(f)
-                    benchmarks.append({
-                        "filename": filename,
-                        "name": data.get("name", "Untitled Benchmark")
-                    })
+                    benchmarks.append(
+                        {
+                            "filename": filename,
+                            "name": data.get("name", "Untitled Benchmark"),
+                        }
+                    )
             except (IOError, json.JSONDecodeError):
                 # Skip corrupted or unreadable files
                 continue
@@ -68,13 +70,15 @@ def save_benchmark():
         # Normalize samples to fit the Sample model schema
         formatted_samples = []
         for i, s in enumerate(samples, start=1):
-            formatted_samples.append({
-                "id": s.get("id", i),  # fallback to index
-                "input": s.get("input", ""),  # string or list of ChatMessage dicts
-                "choices": s.get("choices", None),
-                "target": s.get("target", ""),
-                "metadata": s.get("metadata", None),
-            })
+            formatted_samples.append(
+                {
+                    "id": s.get("id", i),  # fallback to index
+                    "input": s.get("input", ""),  # string or list of ChatMessage dicts
+                    "choices": s.get("choices", None),
+                    "target": s.get("target", ""),
+                    "metadata": s.get("metadata", None),
+                }
+            )
 
         # Full benchmark JSON
         benchmark_payload = {
@@ -83,7 +87,7 @@ def save_benchmark():
             "revision": benchmark_revision,
             "description": benchmark_description,
             "systemPrompt": benchmark_system_prompt,
-            "samples": formatted_samples
+            "samples": formatted_samples,
         }
 
         # Save to disk
@@ -93,13 +97,13 @@ def save_benchmark():
         with open(filepath, "w") as f:
             json.dump(benchmark_payload, f, indent=4)
 
-        return jsonify({
-            "message": "Benchmark saved successfully.",
-            "filename": filename
-        }), 201
+        return (
+            jsonify({"message": "Benchmark saved successfully.", "filename": filename}),
+            201,
+        )
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-    
+
 
 @app.route("/api/benchmarks/<filename>", methods=["GET"])
 def get_benchmark(filename):
@@ -108,7 +112,7 @@ def get_benchmark(filename):
         # Security: Ensure filename is safe
         if not re.match(r"^[\w-]+\.json$", filename):
             return jsonify({"error": "Invalid filename"}), 400
-        
+
         filepath = os.path.join(BENCHMARKS_DIR, filename)
         if not os.path.exists(filepath):
             return jsonify({"error": "Benchmark not found."}), 404
