@@ -5,7 +5,6 @@ build-backend = "hatchling.build"
 
 [project.scripts]
 benchcraft = "benchcraft.entrypoint:main"
-benchcraft-test = "benchcraft.main:main"
 
 [project]
 requires-python = ">=3.10"
