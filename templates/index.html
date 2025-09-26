@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const createPromptElement = (input = '', target = '', choices = '', metadata = '') => {
+    const createPromptElement = (input = '', target = '', choices = '', metadata = {}) => {
         const div = document.createElement('div');
         div.className = 'p-4 bg-gray-700 rounded-lg prompt-pair';
         div.innerHTML = `
@@ -190,9 +190,43 @@ document.addEventListener('DOMContentLoaded', () => {
                 <textarea rows="3" placeholder="Input / Prompt" class="sample-input w-full bg-gray-600 rounded-md p-2 text-sm">${input}</textarea>
                 <textarea rows="3" placeholder="Target / Ideal Answer" class="sample-target w-full bg-gray-600 rounded-md p-2 text-sm">${target}</textarea>
                 <input type="text" placeholder="Choices (comma separated)" value="${choices}" class="sample-choices w-full bg-gray-600 rounded-md p-2 text-sm">
-                <textarea rows="2" placeholder="Metadata (JSON or key:value)" class="sample-metadata w-full bg-gray-600 rounded-md p-2 text-sm">${metadata}</textarea>
+
+                <div class="metadata-section bg-gray-800 p-2 rounded-md">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-gray-300 text-sm font-semibold">Metadata</span>
+                        <button class="add-metadata-btn text-indigo-400 hover:text-indigo-500 text-sm">+ Add</button>
+                    </div>
+                    <div class="metadata-list space-y-2"></div>
+                </div>
             </div>
         `;
+        
+        const metadataList = div.querySelector('.metadata-list');
+        const addBtn = div.querySelector('.add-metadata-btn');
+
+        const addMetadataRow = (key = '', value = '') => {
+            const row = document.createElement('div');
+            row.className = 'flex space-x-2 items-center';
+            row.innerHTML = `
+                <input type="text" value="${key}" placeholder="Key" class="meta-key flex-1 bg-gray-600 rounded-md p-2 text-sm">
+                <input type="text" value="${value}" placeholder="Value" class="meta-value flex-1 bg-gray-600 rounded-md p-2 text-sm">
+                <button class="remove-meta-btn text-red-400 hover:text-red-500 font-bold text-xs">✕</button>
+            `;
+            metadataList.appendChild(row);
+
+            row.querySelector('.remove-meta-btn').addEventListener('click', () => row.remove());
+        };
+
+        addBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            addMetadataRow();
+        });
+
+        // preload metadata if any
+        if (metadata && typeof metadata === 'object') {
+            Object.entries(metadata).forEach(([k, v]) => addMetadataRow(k, v));
+        }
+
         promptsList.appendChild(div);
     };
 
@@ -211,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     s.input || '',
                     s.target || '',
                     s.choices ? s.choices.join(', ') : '',
-                    s.metadata ? JSON.stringify(s.metadata, null, 2) : ''
+                    s.metadata || {}
                 );
             });
         } else {
@@ -264,22 +298,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const input = div.querySelector('.sample-input').value;
             const target = div.querySelector('.sample-target').value;
             const rawChoices = div.querySelector('.sample-choices').value;
-            const rawMetadata = div.querySelector('.sample-metadata').value;
 
             let choices = rawChoices ? rawChoices.split(',').map(c => c.trim()) : null;
-            let metadata = null;
-            try {
-                metadata = rawMetadata ? JSON.parse(rawMetadata) : null;
-            } catch {
-                if (rawMetadata.includes(':')) {
-                    metadata = Object.fromEntries(
-                        rawMetadata.split(',').map(pair => {
-                            const [k, v] = pair.split(':').map(x => x.trim());
-                            return [k, v];
-                        })
-                    );
-                }
-            }
+
+            // Collect metadata rows
+            const metadataRows = div.querySelectorAll('.metadata-list .flex');
+            let metadata = {};
+            metadataRows.forEach(row => {
+                const key = row.querySelector('.meta-key').value.trim();
+                const value = row.querySelector('.meta-value').value.trim();
+                if (key) metadata[key] = value;
+            });
+            if (Object.keys(metadata).length === 0) metadata = null;
 
             return {
                 id: i + 1,
@@ -365,4 +395,3 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
-
