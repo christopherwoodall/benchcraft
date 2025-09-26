@@ -59,6 +59,10 @@ def save_benchmark():
 
         # Required benchmark-level metadata
         benchmark_name = data["name"]
+        author_name = data.get("author", "Unknown Author")
+        benchmark_revision = data.get("revision", "1.0")
+        benchmark_description = data.get("description", "")
+        benchmark_system_prompt = data.get("systemPrompt", "")
         samples = data.get("samples", [])
 
         # Normalize samples to fit the Sample model schema
@@ -75,6 +79,10 @@ def save_benchmark():
         # Full benchmark JSON
         benchmark_payload = {
             "name": benchmark_name,
+            "author": author_name,
+            "revision": benchmark_revision,
+            "description": benchmark_description,
+            "systemPrompt": benchmark_system_prompt,
             "samples": formatted_samples
         }
 
