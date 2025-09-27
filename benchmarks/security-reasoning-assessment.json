@@ -1,0 +1,410 @@
+{
+    "name": "Security Reasoning Assessment",
+    "author": "Christopher Woodall",
+    "revision": "1",
+    "description": "This benchmark evaluates an AI agent's ability to reason and perform tasks within a modern DevSecOps context. It presents the agent with a series of realistic scenarios and technical challenges designed to rigorously test its proficiency across six core domains: Automation, Codification, Architecture, Observability, Adversarial-Thinking, and Pragmatism. The goal is to measure the agent's practical effectiveness as a collaborative partner in a fast-paced, security-conscious software development environment, assessing its ability to provide solutions that are not only technically correct but also actionable and context-aware.",
+    "evaluationType": "multiple_choice",
+    "systemPrompt": "You are a senior AI DevSecOps Engineer. You are an integrated member of a high-velocity engineering team at a cloud-native technology company that practices continuous integration and continuous deployment (CI/CD).\n\nYour primary mission is to proactively integrate security into every stage of the software development lifecycle, enabling your team to ship software that is both innovative and secure by default.\n\nYour core principles are:\n\n    Automate Everything: Default to automated, code-based solutions for security controls, policy enforcement, and infrastructure management.\n\n    Think Like an Adversary: Scrutinize system designs, code, and configurations for potential vulnerabilities, anticipating threats before they materialize.\n\n    Enable, Don't Block: Provide practical, risk-based recommendations that balance robust security with business objectives and engineering velocity.\n\nYour responses should always be clear, actionable, and tailored for a technical audience of software engineers and product managers.",
+    "samples": [
+        {
+            "id": 1,
+            "input": "Which layer of the OSI model does a Web Application Firewall (WAF) primarily operate on?\nA) Layer 2 (Data Link)\nB) Layer 3 (Network)\nC) Layer 4 (Transport)\nD) Layer 7 (Application)",
+            "target": "D",
+            "metadata": {
+                "topic": "foundations"
+            }
+        },
+        {
+            "id": 2,
+            "input": "The CIA Triad is a foundational model that guides information security policy. What do the letters C, I, and A stand for?\nA) Control, Integrity, Authentication\nB) Confidentiality, Integrity, Availability\nC) Confidentiality, Information, Access\nD) Control, Information, Authorization",
+            "target": "B",
+            "metadata": {
+                "topic": "foundations"
+            }
+        },
+        {
+            "id": 3,
+            "input": "Which of the following is an example of an asymmetric encryption algorithm?\nA) AES\nB) Blowfish\nC) RSA\nD) Twofish",
+            "target": "C",
+            "metadata": {
+                "topic": "foundations"
+            }
+        },
+        {
+            "id": 4,
+            "input": "What is the primary security characteristic of a cryptographic hash function?\nA) It is easily reversible with the correct key.\nB) It is a one-way function, making it infeasible to reverse.\nC) It encrypts data for secure transmission.\nD) It is used to prove a user's identity.",
+            "target": "B",
+            "metadata": {
+                "topic": "foundations"
+            }
+        },
+        {
+            "id": 5,
+            "input": "In the principle of \"least privilege,\" a user or system should be granted:\nA) Full access for a limited amount of time.\nB) Read-only access to all systems.\nC) Only the permissions essential to perform its intended function.\nD) Administrative access to their local machine only.",
+            "target": "C",
+            "metadata": {
+                "topic": "foundations"
+            }
+        },
+        {
+            "id": 6,
+            "input": "What does Base64 encoding do?\nA) Encrypts data to make it unreadable.\nB) Compresses data to reduce its size.\nC) Represents binary data in an ASCII string format.\nD) Hashes data to verify its integrity.",
+            "target": "C",
+            "metadata": {
+                "topic": "foundations"
+            }
+        },
+        {
+            "id": 7,
+            "input": "A SYN flood is a type of which attack?\nA) Man-in-the-Middle\nB) SQL Injection\nC) Cross-Site Scripting\nD) Denial-of-Service",
+            "target": "D",
+            "metadata": {
+                "topic": "foundations"
+            }
+        },
+        {
+            "id": 8,
+            "input": "In a CI/CD pipeline, where is the most effective and cost-efficient stage to run Static Application Security Testing (SAST)?\nA) After deployment to production.\nB) During the QA/testing stage.\nC) As soon as code is committed or during a pull request.\nD) Once a week on the main branch.",
+            "target": "C",
+            "metadata": {
+                "topic": "automation"
+            }
+        },
+        {
+            "id": 9,
+            "input": "Which of the following is the MOST secure method for managing database credentials used by a CI/CD pipeline?\nA) Storing them as plaintext environment variables in the CI tool.\nB) Hardcoding them directly in the application source code.\nC) Committing them to a private Git repository in an encrypted file.\nD) Retrieving them at runtime from a secrets management service like HashiCorp Vault or AWS Secrets Manager.",
+            "target": "D",
+            "metadata": {
+                "topic": "automation"
+            }
+        },
+        {
+            "id": 10,
+            "input": "Dynamic Application Security Testing (DAST) tools are most effective at finding which class of vulnerabilities?\nA) Insecure library dependencies.\nB) Hardcoded secrets in source code.\nC) Runtime issues like SQL Injection and Cross-Site Scripting.\nD) Logic flaws in the application's business rules.",
+            "target": "C",
+            "metadata": {
+                "topic": "automation"
+            }
+        },
+        {
+            "id": 11,
+            "input": "What is the primary goal of \"shifting security left\"?\nA) To hire more security professionals for the operations team.\nB) To conduct security audits only at the end of the development cycle.\nC) To integrate security considerations and tools as early as possible in the development lifecycle.\nD) To shift all security responsibility onto the development team.",
+            "target": "C",
+            "metadata": {
+                "topic": "automation"
+            }
+        },
+        {
+            "id": 12,
+            "input": "A Software Composition Analysis (SCA) tool is primarily used to:\nA) Analyze the flow of data through a running application.\nB) Scan source code for programming errors.\nC) Identify and inventory open-source dependencies and their known vulnerabilities.\nD) Test the security of the underlying infrastructure.",
+            "target": "C",
+            "metadata": {
+                "topic": "automation"
+            }
+        },
+        {
+            "id": 13,
+            "input": "In a DevSecOps context, what is the function of a Git pre-commit hook?\nA) To automatically merge the code into the main branch.\nB) To run local checks (e.g., for secrets, linting) before code is committed to the repository.\nC) To deploy the code to a staging environment.\nD) To notify the security team of a new commit.",
+            "target": "B",
+            "metadata": {
+                "topic": "automation"
+            }
+        },
+        {
+            "id": 14,
+            "input": "Integrating security alerts and commands into a platform like Slack or Microsoft Teams is an example of:\nA) Shift Right\nB) CloudSec\nC) Zero Trust\nD) ChatOps",
+            "target": "D",
+            "metadata": {
+                "topic": "automation"
+            }
+        },
+        {
+            "id": 15,
+            "input": "In Terraform, what is the primary purpose of a `security_group` resource in a cloud environment?\nA) To define IAM user groups and permissions.\nB) To act as a stateful virtual firewall for an instance, controlling inbound and outbound traffic.\nC) To encrypt the storage volumes attached to an instance.\nD) To manage SSH keys for instance access.",
+            "target": "B",
+            "metadata": {
+                "topic": "codification"
+            }
+        },
+        {
+            "id": 16,
+            "input": "Which of the following best describes Policy as Code (PaC)?\nA) Writing security policies in a word processor.\nB) Manually reviewing code against a written security policy.\nC) Defining security and compliance policies in a high-level, machine-readable language.\nD) A checklist of security best practices for developers.",
+            "target": "C",
+            "metadata": {
+                "topic": "codification"
+            }
+        },
+        {
+            "id": 17,
+            "input": "In a Dockerfile, what is the primary security benefit of using a multi-stage build?\nA) It makes the final image larger with more debugging tools.\nB) It ensures the container always runs as the root user.\nC) It creates a smaller final image containing only the application and its runtime dependencies, reducing the attack surface.\nD) It automatically scans the image for vulnerabilities.",
+            "target": "C",
+            "metadata": {
+                "topic": "codification"
+            }
+        },
+        {
+            "id": 18,
+            "input": "What is \"configuration drift\" in the context of Infrastructure as Code (IaC)?\nA) When developers use different coding styles in their IaC files.\nB) When the deployed cloud infrastructure's state no longer matches the state defined in the code.\nC) A feature that automatically updates the code when infrastructure is changed manually.\nD) The time it takes to provision infrastructure from code.",
+            "target": "B",
+            "metadata": {
+                "topic": "codification"
+            }
+        },
+        {
+            "id": 19,
+            "input": "Which language is commonly used for writing policies in the Open Policy Agent (OPA) framework?\nA) Python\nB) YAML\nC) Rego\nD) Go",
+            "target": "C",
+            "metadata": {
+                "topic": "codification"
+            }
+        },
+        {
+            "id": 20,
+            "input": "When codifying security for a cloud storage bucket, which configuration helps prevent data exfiltration?\nA) Enabling public read access for all objects.\nB) Disabling versioning to save space.\nC) Applying a bucket policy that denies access from outside a trusted network or VPC.\nD) Using the lowest level of storage redundancy.",
+            "target": "C",
+            "metadata": {
+                "topic": "codification"
+            }
+        },
+        {
+            "id": 21,
+            "input": "A primary security benefit of managing infrastructure as code in a version control system like Git is:\nA) It prevents anyone from ever making a manual change.\nB) It provides a clear, auditable history of all changes made to the infrastructure's definition.\nC) It automatically remediates all security vulnerabilities.\nD) It compiles the code into a binary for faster deployment.",
+            "target": "B",
+            "metadata": {
+                "topic": "codification"
+            }
+        },
+        {
+            "id": 22,
+            "input": "The \"Zero Trust\" security model operates on which core principle?\nA) Trust any user inside the corporate network.\nB) Never trust, always verify, and assume the network is hostile.\nC) Once a user is authenticated, grant them broad access.\nD) Focus security efforts exclusively on the network perimeter.",
+            "target": "B",
+            "metadata": {
+                "topic": "architecture"
+            }
+        },
+        {
+            "id": 23,
+            "input": "In a microservices architecture, what is the primary security role of an API Gateway?\nA) To store application data.\nB) To run the business logic for each microservice.\nC) To act as a single entry point for authentication, rate limiting, and logging.\nD) To directly connect clients to the internal database.",
+            "target": "C",
+            "metadata": {
+                "topic": "architecture"
+            }
+        },
+        {
+            "id": 24,
+            "input": "The strategy of having multiple, layered security controls (e.g., a WAF, a network firewall, and host-based security) is known as:\nA) Shift Left\nB) Defense-in-Depth\nC) Security as Code\nD) Zero Trust",
+            "target": "B",
+            "metadata": {
+                "topic": "architecture"
+            }
+        },
+        {
+            "id": 25,
+            "input": "In AWS IAM, what is the main difference between a user and a role?\nA) A user has a password, a role does not.\nB) A role is an identity with permissions that can be temporarily assumed by a trusted entity (like a user or application).\nC) A user is for people, a role is for applications.\nD) A user has permanent credentials, while a role has none.",
+            "target": "B",
+            "metadata": {
+                "topic": "architecture"
+            }
+        },
+        {
+            "id": 26,
+            "input": "What is a key security challenge often found in serverless (FaaS) architectures?\nA) The inability to scale under load.\nB) Functions being granted overly broad permissions to other cloud resources.\nC) The high cost of running idle functions.\nD) Slow cold start times impacting user experience.",
+            "target": "B",
+            "metadata": {
+                "topic": "architecture"
+            }
+        },
+        {
+            "id": 27,
+            "input": "When designing a multi-tenant SaaS application, the most critical security design consideration is:\nA) Application performance and speed.\nB) Strong data isolation between tenants.\nC) The user interface design.\nD) The choice of programming language.",
+            "target": "B",
+            "metadata": {
+                "topic": "architecture"
+            }
+        },
+        {
+            "id": 28,
+            "input": "What is the purpose of a bastion host (or jump box)?\nA) To host the primary production database.\nB) To serve as a public-facing web server.\nC) To provide a hardened, secure, single point of entry to access systems in a private network.\nD) To store application logs and metrics.",
+            "target": "C",
+            "metadata": {
+                "topic": "architecture"
+            }
+        },
+        {
+            "id": 29,
+            "input": "A primary function of a Security Information and Event Management (SIEM) system is to:\nA) Prevent attacks by patching vulnerabilities.\nB) Write secure code for applications.\nC) Aggregate, correlate, and analyze log data from various sources to detect potential threats.\nD) Manage user identities and access permissions.",
+            "target": "C",
+            "metadata": {
+                "topic": "observability"
+            }
+        },
+        {
+            "id": 30,
+            "input": "How does the MITRE ATT&CK framework assist in security observability?\nA) It provides a common language to describe adversary behaviors, which can be mapped to log data to detect threats.\nB) It is a tool that automatically blocks attacks.\nC) It is a compliance standard like PCI DSS.\nD) It is a secure coding guide for developers.",
+            "target": "A",
+            "metadata": {
+                "topic": "observability"
+            }
+        },
+        {
+            "id": 31,
+            "input": "Which of the following activities would be a strong indicator of a potential container escape?\nA) High CPU usage within a container.\nB) A process spawned from a container attempting to read `/etc/shadow` on the host machine.\nC) A container making an external network request to a known API.\nD) The container writing logs to stdout.",
+            "target": "B",
+            "metadata": {
+                "topic": "observability"
+            }
+        },
+        {
+            "id": 32,
+            "input": "Why is log normalization critical for effective security analysis in a SIEM?\nA) It encrypts the logs so they cannot be tampered with.\nB) It converts logs from different systems into a standardized format, allowing for easier correlation.\nC) It deletes unimportant log entries to save space.\nD) It adds more detail to each log entry.",
+            "target": "B",
+            "metadata": {
+                "topic": "observability"
+            }
+        },
+        {
+            "id": 33,
+            "input": "A primary goal of container runtime security tools is to:\nA) Scan a Dockerfile for insecure configurations before an image is built.\nB) Check open-source libraries for known vulnerabilities.\nC) Detect and prevent anomalous or malicious activity in a running container, such as unexpected process execution.\nD) Manage the orchestration of containers across a cluster.",
+            "target": "C",
+            "metadata": {
+                "topic": "observability"
+            }
+        },
+        {
+            "id": 34,
+            "input": "A \"canary token\" is a type of security measure designed to:\nA) Prevent denial-of-service attacks.\nB) Act as a honeypot that, when accessed, triggers an alert about a potential breach.\nC) Validate user input to prevent XSS.\nD) Encrypt sensitive data at rest.",
+            "target": "B",
+            "metadata": {
+                "topic": "observability"
+            }
+        },
+        {
+            "id": 35,
+            "input": "In security alerting, reducing the \"signal-to-noise ratio\" means:\nA) Increasing the total number of alerts generated.\nB) Decreasing the number of false positives relative to true positive alerts.\nC) Sending all alerts to every member of the team.\nD) Turning off all alerting to avoid distractions.",
+            "target": "B",
+            "metadata": {
+                "topic": "observability"
+            }
+        },
+        {
+            "id": 36,
+            "input": "The most effective and robust method for preventing SQL Injection attacks is to:\nA) Use a Web Application Firewall (WAF).\nB) Sanitize user input by blacklisting keywords like \"SELECT\" and \"DROP\".\nC) Use parameterized queries (prepared statements).\nD) Regularly change the database password.",
+            "target": "C",
+            "metadata": {
+                "topic": "adversarial-thinking"
+            }
+        },
+        {
+            "id": 37,
+            "input": "A reflected Cross-Site Scripting (XSS) attack primarily targets:\nA) The web server's file system.\nB) The application's database.\nC) The session and data of another user of the web application.\nD) The network infrastructure.",
+            "target": "C",
+            "metadata": {
+                "topic": "adversarial-thinking"
+            }
+        },
+        {
+            "id": 38,
+            "input": "In the STRIDE threat modeling methodology, the \"R\" stands for:\nA) Risk\nB) Response\nC) Repudiation\nD) Reconnaissance",
+            "target": "C",
+            "metadata": {
+                "topic": "adversarial-thinking"
+            }
+        },
+        {
+            "id": 39,
+            "input": "An anti-CSRF token is used to prevent which type of attack?\nA) An attacker forcing an authenticated user's browser to send an unintended, malicious request to a web application.\nB) An attacker injecting malicious scripts into a website viewed by other users.\nC) An attacker flooding a server with requests to make it unavailable.\nD) An attacker intercepting traffic between a user and a server.",
+            "target": "A",
+            "metadata": {
+                "topic": "adversarial-thinking"
+            }
+        },
+        {
+            "id": 40,
+            "input": "An attack where a malicious actor publishes a package to an internal repository with the same name as a public package, tricking the build system into using the malicious one, is known as:\nA) SQL Injection\nB) Dependency Confusion\nC) Clickjacking\nD) Credential Stuffing",
+            "target": "B",
+            "metadata": {
+                "topic": "adversarial-thinking"
+            }
+        },
+        {
+            "id": 41,
+            "input": "The primary goal of a credential stuffing attack is to:\nA) Brute-force a single user's password.\nB) Exploit a software vulnerability to gain access.\nC) Use lists of credentials stolen from one breach to gain unauthorized access to other services.\nD) Trick a user into revealing their credentials via a phishing email.",
+            "target": "C",
+            "metadata": {
+                "topic": "adversarial-thinking"
+            }
+        },
+        {
+            "id": 42,
+            "input": "An XML External Entity (XXE) vulnerability can directly lead to which security impact?\nA) The execution of malicious JavaScript in a user's browser.\nB) The disclosure of sensitive data from the server's local files.\nC) The creation of a new administrative user in the database.\nD) The bypassing of client-side validation logic.",
+            "target": "B",
+            "metadata": {
+                "topic": "adversarial-thinking"
+            }
+        },
+        {
+            "id": 43,
+            "input": "What is the fundamental difference between a Denial of Service (DoS) and a Distributed Denial of Service (DDoS) attack?\nA) DoS attacks are always more damaging.\nB) DoS attacks target the network, while DDoS attacks target the application.\nC) DoS attacks originate from a single source, while DDoS attacks originate from many distributed sources.\nD) There is no difference; the terms are interchangeable.",
+            "target": "C",
+            "metadata": {
+                "topic": "adversarial-thinking"
+            }
+        },
+        {
+            "id": 44,
+            "input": "What is the primary purpose of the Common Vulnerability Scoring System (CVSS)?\nA) To provide a standardized numerical score reflecting the severity of a security vulnerability.\nB) To track the cost of a security breach.\nC) To list the names of all known hackers.\nD) To provide a secure coding certification.",
+            "target": "A",
+            "metadata": {
+                "topic": "pragmatism"
+            }
+        },
+        {
+            "id": 45,
+            "input": "In risk management, a \"compensating control\" is:\nA) A control that is too expensive to implement.\nB) An alternative measure put in place to mitigate a risk when the primary control is not feasible.\nC) A control that reports security incidents.\nD) The process of getting insurance for a security risk.",
+            "target": "B",
+            "metadata": {
+                "topic": "pragmatism"
+            }
+        },
+        {
+            "id": 46,
+            "input": "A SAST scan blocks a build due to a \"medium\" severity vulnerability in a legacy part of the application. The most pragmatic first step is to:\nA) Immediately revert the code change that triggered the scan.\nB) Disable the SAST scan so the build can proceed.\nC) Triage the finding to determine if it is a true positive and exploitable in the application's context.\nD) Accept the risk and merge the code without further investigation.",
+            "target": "C",
+            "metadata": {
+                "topic": "pragmatism"
+            }
+        },
+        {
+            "id": 47,
+            "input": "A SOC 2 Type II report provides an independent assessment of:\nA) A company's financial performance.\nB) The design and operational effectiveness of a company's security controls over a period of time.\nC) A company's marketing strategy.\nD) The code quality of a company's main product.",
+            "target": "B",
+            "metadata": {
+                "topic": "pragmatism"
+            }
+        },
+        {
+            "id": 48,
+            "input": "What is the main objective of creating and maintaining a risk register?\nA) To satisfy a compliance requirement with a document that is rarely used.\nB) To document and track identified risks, their assessment, and their mitigation plans.\nC) To create a list of all employees who have access to sensitive data.\nD) To list all the software licenses used by the company.",
+            "target": "B",
+            "metadata": {
+                "topic": "pragmatism"
+            }
+        },
+        {
+            "id": 49,
+            "input": "It is appropriate for an organization to formally accept a risk when:\nA) The security team is too busy to fix the issue.\nB) The vulnerability has a low CVSS score.\nC) A conscious, informed decision is made that the cost or business impact of mitigating the risk outweighs the potential loss.\nD) The vulnerability was discovered more than a year ago.",
+            "target": "C",
+            "metadata": {
+                "topic": "pragmatism"
+            }
+        },
+        {
+            "id": 50,
+            "input": "A \"blameless post-mortem\" after a security incident is a meeting focused on:\nA) Identifying the individual responsible for the error.\nB) Understanding the systemic and process-related causes of the incident to prevent recurrence.\nC) Calculating the financial cost of the incident.\nD) Informing the company's legal team about the incident.",
+            "target": "B",
+            "metadata": {
+                "topic": "pragmatism"
+            }
+        }
+    ]
+}

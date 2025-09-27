@@ -1,5 +1,5 @@
-benchmarks/*
-!benchmarks/example-eval.json
+# benchmarks/*
+# !benchmarks/example-eval.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

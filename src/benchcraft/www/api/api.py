@@ -1,19 +1,25 @@
 import os
 import json
 import re
-from flask import Flask, render_template, request, jsonify
+from flask import Blueprint, request, jsonify
 
 
-# Initialize Flask App
-app = Flask(__name__)
+api_blueprint = Blueprint("api", __name__)
 
 
-# Define the directory to store benchmark JSON files
+# Initial Setup
 BENCHMARKS_DIR = "benchmarks"
+RESULTS_FILE = "benchmarks/results.json"
+
 if not os.path.exists(BENCHMARKS_DIR):
     os.makedirs(BENCHMARKS_DIR)
 
+if not os.path.exists(RESULTS_FILE):
+    with open(RESULTS_FILE, "w") as f:
+        json.dump([], f)
 
+
+# Helper: Sanitize filenames
 def sanitize_filename(name):
     """Sanitizes a string to be used as a filename."""
     name = re.sub(r"[^\w\s-]", "", name).strip().lower()
@@ -21,25 +27,15 @@ def sanitize_filename(name):
     return name
 
 
-@app.route("/")
-def index():
-    """Renders the main HTML page."""
-    return render_template("index.html")
-
-
-@app.route("/runner")
-def runner_page():
-    """Renders the new runner and results page."""
-    return render_template("runner.html")
-
-
-@app.route("/api/benchmarks", methods=["GET"])
+@api_blueprint.route("/benchmarks", methods=["GET"])
 def get_benchmarks():
     """Lists all available benchmark files."""
     try:
         files = [f for f in os.listdir(BENCHMARKS_DIR) if f.endswith(".json")]
         benchmarks = []
         for filename in files:
+            if "results.json" in filename:
+                continue  # Skip results file
             try:
                 with open(os.path.join(BENCHMARKS_DIR, filename), "r") as f:
                     data = json.load(f)
@@ -57,7 +53,7 @@ def get_benchmarks():
         return jsonify({"error": str(e)}), 500
 
 
-@app.route("/api/benchmarks", methods=["POST"])
+@api_blueprint.route("/benchmarks", methods=["POST"])
 def save_benchmark():
     """Saves a new or existing benchmark in Sample-compatible format."""
     try:
@@ -70,6 +66,7 @@ def save_benchmark():
         author_name = data.get("author", "Unknown Author")
         benchmark_revision = data.get("revision", "1.0")
         benchmark_description = data.get("description", "")
+        evaluation_type = data.get("evaluationType", "multiple_choice")
         benchmark_system_prompt = data.get("systemPrompt", "")
         samples = data.get("samples", [])
 
@@ -80,7 +77,6 @@ def save_benchmark():
                 {
                     "id": s.get("id", i),  # fallback to index
                     "input": s.get("input", ""),  # string or list of ChatMessage dicts
-                    "choices": s.get("choices", None),
                     "target": s.get("target", ""),
                     "metadata": s.get("metadata", None),
                 }
@@ -92,6 +88,8 @@ def save_benchmark():
             "author": author_name,
             "revision": benchmark_revision,
             "description": benchmark_description,
+            "evaluationType": evaluation_type,
+            # TODO: Move the below into an "evaluation:" field in future:
             "systemPrompt": benchmark_system_prompt,
             "samples": formatted_samples,
         }
@@ -111,7 +109,7 @@ def save_benchmark():
         return jsonify({"error": str(e)}), 500
 
 
-@app.route("/api/benchmarks/<filename>", methods=["GET"])
+@api_blueprint.route("/benchmarks/<filename>", methods=["GET"])
 def get_benchmark(filename):
     """Loads a specific benchmark file."""
     try:
@@ -130,7 +128,7 @@ def get_benchmark(filename):
         return jsonify({"error": str(e)}), 500
 
 
-@app.route("/api/benchmarks/<filename>", methods=["DELETE"])
+@api_blueprint.route("/benchmarks/<filename>", methods=["DELETE"])
 def delete_benchmark(filename):
     """Deletes a specific benchmark file."""
     try:
@@ -146,11 +144,3 @@ def delete_benchmark(filename):
             return jsonify({"error": "Benchmark not found."}), 404
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
-
-def main():
-    app.run(debug=True)
-
-
-if __name__ == "__main__":
-    main()

@@ -1,73 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eval Runner & Results</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-    </style>
-</head>
-<body class="bg-gray-900 text-white p-8">
-    <div class="max-w-7xl mx-auto space-y-8">
-        <div class="flex justify-between items-center">
-             <h1 class="text-3xl font-bold">Evaluation Runner & Dashboard</h1>
-             <a href="/" class="text-indigo-400 hover:text-indigo-500">&larr; Back to Editor</a>
-        </div>
-
-        <div class="bg-gray-800 p-6 rounded-lg">
-            <h2 class="text-xl font-semibold mb-4 border-b border-gray-700 pb-2">Run New Evaluation</h2>
-            <div class="flex items-end space-x-4">
-                <div class="flex-1">
-                    <label for="benchmark-select" class="block text-sm font-medium text-gray-300">Select Benchmark</label>
-                    <select id="benchmark-select" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm p-2"></select>
-                </div>
-                <div class="flex-1">
-                    <label for="model-select" class="block text-sm font-medium text-gray-300">Select Model</label>
-                    <select id="model-select" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm p-2"></select>
-                </div>
-                <button id="run-eval-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200 h-10">Run Eval</button>
-            </div>
-        </div>
-
-        <div class="bg-gray-800 p-6 rounded-lg">
-            <div class="flex justify-between items-center mb-4 border-b border-gray-700 pb-2">
-                <h2 class="text-xl font-semibold">Results History</h2>
-                <button id="refresh-results-btn" class="text-gray-400 hover:text-white text-sm">Refresh</button>
-            </div>
-            
-            <div class="mb-6 p-4 bg-gray-900 rounded-lg">
-                <h3 class="font-semibold mb-4 text-lg">Performance Comparison</h3>
-                <div class="flex space-x-4 mb-4">
-                    <div class="flex-1">
-                        <label for="graph-benchmark-select" class="block text-sm font-medium text-gray-300">View results for benchmark:</label>
-                        <select id="graph-benchmark-select" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm p-2"></select>
-                    </div>
-                </div>
-                <canvas id="resultsChart"></canvas>
-            </div>
-
-            <table class="w-full text-left">
-                <thead class="border-b border-gray-600 text-sm text-gray-400">
-                    <tr>
-                        <th class="py-2 px-4">Timestamp</th>
-                        <th class="py-2 px-4">Benchmark</th>
-                        <th class="py-2 px-4">Model</th>
-                        <th class="py-2 px-4">Accuracy</th>
-                    </tr>
-                </thead>
-                <tbody id="results-table-body">
-                    </tbody>
-            </table>
-        </div>
-    </div>
-
-    <div id="toast" class="fixed bottom-5 right-5 bg-gray-800 text-white py-2 px-4 rounded-lg shadow-lg transition-opacity duration-300 opacity-0"></div>
-
-<script>
 document.addEventListener('DOMContentLoaded', () => {
     const benchmarkSelect = document.getElementById('benchmark-select');
     const modelSelect = document.getElementById('model-select');
@@ -123,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!selectedBenchmark) return;
 
         const filteredData = allResults.filter(r => r.benchmark_name === selectedBenchmark);
-        
+
         const chartData = {
             labels: filteredData.map(r => r.model),
             datasets: [{
@@ -152,15 +82,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const loadResults = async () => {
         try {
-            const response = await fetch('/api/results');
+            const response = await fetch('/run/results');
             allResults = await response.json();
             renderResultsTable(allResults);
 
             const uniqueBenchmarks = [...new Set(allResults.map(r => r.benchmark_name))];
             graphBenchmarkSelect.innerHTML = uniqueBenchmarks.map(name => `<option value="${name}">${name}</option>`).join('');
             if (uniqueBenchmarks.length > 0) {
-                 graphBenchmarkSelect.value = uniqueBenchmarks[0];
-                 renderChart();
+                graphBenchmarkSelect.value = uniqueBenchmarks[0];
+                renderChart();
             }
         } catch (error) {
             showToast('Failed to load results.', true);
@@ -178,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             runEvalBtn.disabled = true;
             runEvalBtn.textContent = 'Running...';
-            const response = await fetch('/api/run', {
+            const response = await fetch('/run/benchmark', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ benchmark_file, model_name })
@@ -199,12 +129,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const initialize = async () => {
         populateSelect(benchmarkSelect, '/api/benchmarks', 'filename', 'name');
-        populateSelect(modelSelect, '/api/models', 'id', 'name');
+        populateSelect(modelSelect, '/run/models', 'id', 'name');
         await loadResults();
     };
 
     initialize();
 });
-</script>
-</body>
-</html>
