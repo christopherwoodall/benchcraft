@@ -1,0 +1,410 @@
+{
+    "name": "Pop Culture Knowledge Assessment",
+    "author": "Claude",
+    "revision": "1",
+    "description": "A comprehensive 50-question multiple choice assessment evaluating AI agent knowledge of contemporary pop culture including music, movies, TV shows, celebrities, internet culture, social media trends, and recent cultural phenomena.",
+    "evaluationType": "multiple_choice",
+    "systemPrompt": "You are an AI assistant being evaluated on your knowledge of pop culture. Answer each multiple choice question by selecting the single best answer from the provided options. Choose the letter (A, B, C, or D) that corresponds to the most accurate answer based on your knowledge of contemporary culture, entertainment, social media trends, and popular phenomena. Only return the letter answer.",
+    "samples": [
+        {
+            "id": 1,
+            "input": "Which song by Billie Eilish won the Grammy Award for Song of the Year in 2020?\nA. bad guy\nB. Therefore I Am\nC. Happier Than Ever\nD. Lovely",
+            "target": "A",
+            "metadata": {
+                "topic": "music"
+            }
+        },
+        {
+            "id": 2,
+            "input": "In the Marvel Cinematic Universe, what is the name of Thor's hammer?\nA. Stormbreaker\nB. Mjolnir\nC. Gungnir\nD. Hofund",
+            "target": "B",
+            "metadata": {
+                "topic": "movies"
+            }
+        },
+        {
+            "id": 3,
+            "input": "Which streaming platform is known for the series 'Stranger Things'?\nA. Hulu\nB. Amazon Prime Video\nC. Netflix\nD. Disney+",
+            "target": "C",
+            "metadata": {
+                "topic": "television"
+            }
+        },
+        {
+            "id": 4,
+            "input": "The phrase 'OK Boomer' became popular on which social media platform?\nA. Instagram\nB. TikTok\nC. Twitter\nD. Facebook",
+            "target": "B",
+            "metadata": {
+                "topic": "internet_culture"
+            }
+        },
+        {
+            "id": 5,
+            "input": "Which artist holds the record for the most Grammy wins of all time?\nA. Taylor Swift\nB. Adele\nC. Beyonc\u00e9\nD. Alicia Keys",
+            "target": "C",
+            "metadata": {
+                "topic": "music"
+            }
+        },
+        {
+            "id": 6,
+            "input": "In 'The Office' (US version), what is the name of Jim's wife?\nA. Karen\nB. Pam\nC. Angela\nD. Kelly",
+            "target": "B",
+            "metadata": {
+                "topic": "television"
+            }
+        },
+        {
+            "id": 7,
+            "input": "Which superhero movie became the highest-grossing film of 2019?\nA. Captain Marvel\nB. Spider-Man: Far From Home\nC. Avengers: Endgame\nD. Joker",
+            "target": "C",
+            "metadata": {
+                "topic": "movies"
+            }
+        },
+        {
+            "id": 8,
+            "input": "The reality show 'Keeping Up with the Kardashians' aired its final episode in which year?\nA. 2020\nB. 2021\nC. 2022\nD. 2023",
+            "target": "B",
+            "metadata": {
+                "topic": "television"
+            }
+        },
+        {
+            "id": 9,
+            "input": "Which song by The Weeknd spent the most weeks at #1 on the Billboard Hot 100?\nA. Can't Feel My Face\nB. Blinding Lights\nC. The Hills\nD. Starboy",
+            "target": "B",
+            "metadata": {
+                "topic": "music"
+            }
+        },
+        {
+            "id": 10,
+            "input": "What does 'stan' mean in internet slang?\nA. To criticize someone harshly\nB. To be an obsessive fan of someone\nC. To ignore someone completely\nD. To collaborate with someone",
+            "target": "B",
+            "metadata": {
+                "topic": "internet_culture"
+            }
+        },
+        {
+            "id": 11,
+            "input": "Which actress plays Eleven in 'Stranger Things'?\nA. Sadie Sink\nB. Maya Hawke\nC. Millie Bobby Brown\nD. Natalia Dyer",
+            "target": "C",
+            "metadata": {
+                "topic": "television"
+            }
+        },
+        {
+            "id": 12,
+            "input": "The viral dance 'The Floss' originated from which video game?\nA. Roblox\nB. Fortnite\nC. Minecraft\nD. Among Us",
+            "target": "B",
+            "metadata": {
+                "topic": "gaming"
+            }
+        },
+        {
+            "id": 13,
+            "input": "Which member of One Direction was the first to release a solo album?\nA. Harry Styles\nB. Liam Payne\nC. Zayn Malik\nD. Niall Horan",
+            "target": "C",
+            "metadata": {
+                "topic": "music"
+            }
+        },
+        {
+            "id": 14,
+            "input": "'Baby Yoda' is the popular name for which character?\nA. Yoda\nB. Grogu\nC. Yaddle\nD. Vandar Tokare",
+            "target": "B",
+            "metadata": {
+                "topic": "television"
+            }
+        },
+        {
+            "id": 15,
+            "input": "Which app is known for short-form vertical videos?\nA. Vine\nB. Instagram\nC. TikTok\nD. Snapchat",
+            "target": "C",
+            "metadata": {
+                "topic": "social_media"
+            }
+        },
+        {
+            "id": 16,
+            "input": "In 'Game of Thrones,' what is the name of Jon Snow's direwolf?\nA. Summer\nB. Lady\nC. Nymeria\nD. Ghost",
+            "target": "D",
+            "metadata": {
+                "topic": "television"
+            }
+        },
+        {
+            "id": 17,
+            "input": "Which artist interrupted Taylor Swift's acceptance speech at the 2009 MTV VMAs?\nA. Jay-Z\nB. Kanye West\nC. Drake\nD. Eminem",
+            "target": "B",
+            "metadata": {
+                "topic": "celebrities"
+            }
+        },
+        {
+            "id": 18,
+            "input": "The meme 'Distracted Boyfriend' features a man looking at another woman while his girlfriend looks disapproving. What stock photo company created this image?\nA. Getty Images\nB. Shutterstock\nC. Adobe Stock\nD. Unsplash",
+            "target": "B",
+            "metadata": {
+                "topic": "internet_culture"
+            }
+        },
+        {
+            "id": 19,
+            "input": "Which social media platform uses the tagline 'Be Real'?\nA. BeReal\nB. Instagram\nC. Snapchat\nD. TikTok",
+            "target": "A",
+            "metadata": {
+                "topic": "social_media"
+            }
+        },
+        {
+            "id": 20,
+            "input": "In the Disney movie 'Frozen,' what is the name of the snowman?\nA. Sven\nB. Kristoff\nC. Olaf\nD. Hans",
+            "target": "C",
+            "metadata": {
+                "topic": "movies"
+            }
+        },
+        {
+            "id": 21,
+            "input": "Which streaming service produced 'The Queen's Gambit'?\nA. Netflix\nB. HBO Max\nC. Apple TV+\nD. Amazon Prime Video",
+            "target": "A",
+            "metadata": {
+                "topic": "television"
+            }
+        },
+        {
+            "id": 22,
+            "input": "The term 'Karen' in internet culture typically refers to:\nA. A helpful customer service representative\nB. A demanding, entitled person who asks to speak to the manager\nC. A social media influencer\nD. A tech-savvy individual",
+            "target": "B",
+            "metadata": {
+                "topic": "internet_culture"
+            }
+        },
+        {
+            "id": 23,
+            "input": "Which boy band sang 'What Makes You Beautiful'?\nA. Backstreet Boys\nB. *NSYNC\nC. One Direction\nD. BTS",
+            "target": "C",
+            "metadata": {
+                "topic": "music"
+            }
+        },
+        {
+            "id": 24,
+            "input": "In 'The Mandalorian,' what is the main character's real name?\nA. Jango Fett\nB. Boba Fett\nC. Din Djarin\nD. Paz Vizsla",
+            "target": "C",
+            "metadata": {
+                "topic": "television"
+            }
+        },
+        {
+            "id": 25,
+            "input": "Which platform is primarily known for professional networking?\nA. Facebook\nB. LinkedIn\nC. Twitter\nD. Instagram",
+            "target": "B",
+            "metadata": {
+                "topic": "social_media"
+            }
+        },
+        {
+            "id": 26,
+            "input": "The movie 'Black Panther' is set in which fictional African nation?\nA. Genosha\nB. Wakanda\nC. Latveria\nD. Sokovia",
+            "target": "B",
+            "metadata": {
+                "topic": "movies"
+            }
+        },
+        {
+            "id": 27,
+            "input": "Which reality competition show features the catchphrase 'Come on down!'?\nA. Wheel of Fortune\nB. Jeopardy!\nC. The Price is Right\nD. Family Feud",
+            "target": "C",
+            "metadata": {
+                "topic": "television"
+            }
+        },
+        {
+            "id": 28,
+            "input": "The acronym 'FOMO' stands for:\nA. Fear of Missing Out\nB. Friends Over Money Only\nC. Fun Over Money Obviously\nD. First One More Opportunity",
+            "target": "A",
+            "metadata": {
+                "topic": "internet_culture"
+            }
+        },
+        {
+            "id": 29,
+            "input": "Which artist released the album 'folklore' in 2020?\nA. Ariana Grande\nB. Taylor Swift\nC. Billie Eilish\nD. Dua Lipa",
+            "target": "B",
+            "metadata": {
+                "topic": "music"
+            }
+        },
+        {
+            "id": 30,
+            "input": "In internet culture, what does 'sliding into DMs' mean?\nA. Posting a story on social media\nB. Sending a private message to someone\nC. Leaving a comment on a post\nD. Sharing someone's content",
+            "target": "B",
+            "metadata": {
+                "topic": "internet_culture"
+            }
+        },
+        {
+            "id": 31,
+            "input": "Which TV show features the character Walter White?\nA. Better Call Saul\nB. Breaking Bad\nC. Ozark\nD. Narcos",
+            "target": "B",
+            "metadata": {
+                "topic": "television"
+            }
+        },
+        {
+            "id": 32,
+            "input": "The song 'Old Town Road' by Lil Nas X samples which Nine Inch Nails track?\nA. Hurt\nB. Closer\nC. 34 Ghosts IV\nD. Head Like a Hole",
+            "target": "C",
+            "metadata": {
+                "topic": "music"
+            }
+        },
+        {
+            "id": 33,
+            "input": "Which social media platform is known for disappearing messages?\nA. Instagram\nB. Twitter\nC. Snapchat\nD. Facebook",
+            "target": "C",
+            "metadata": {
+                "topic": "social_media"
+            }
+        },
+        {
+            "id": 34,
+            "input": "In 'Friends,' what is the name of Ross's pet monkey?\nA. George\nB. Marcel\nC. Curious\nD. Abu",
+            "target": "B",
+            "metadata": {
+                "topic": "television"
+            }
+        },
+        {
+            "id": 35,
+            "input": "The phrase 'It's giving...' in Gen Z slang means:\nA. It's expensive\nB. It's confusing\nC. It has the vibe/energy of\nD. It's disappointing",
+            "target": "C",
+            "metadata": {
+                "topic": "internet_culture"
+            }
+        },
+        {
+            "id": 36,
+            "input": "Which movie won the Academy Award for Best Picture in 2020?\nA. 1917\nB. Joker\nC. Parasite\nD. Once Upon a Time in Hollywood",
+            "target": "C",
+            "metadata": {
+                "topic": "movies"
+            }
+        },
+        {
+            "id": 37,
+            "input": "The dating app known for swiping right or left is:\nA. Bumble\nB. Hinge\nC. Tinder\nD. Match",
+            "target": "C",
+            "metadata": {
+                "topic": "social_media"
+            }
+        },
+        {
+            "id": 38,
+            "input": "Which K-pop group performed at the Grammy Awards in 2022?\nA. BLACKPINK\nB. BTS\nC. TWICE\nD. Red Velvet",
+            "target": "B",
+            "metadata": {
+                "topic": "music"
+            }
+        },
+        {
+            "id": 39,
+            "input": "The term 'ghosting' in modern dating refers to:\nA. Dating someone secretly\nB. Suddenly cutting off all communication\nC. Going on a first date\nD. Meeting someone online",
+            "target": "B",
+            "metadata": {
+                "topic": "internet_culture"
+            }
+        },
+        {
+            "id": 40,
+            "input": "Which actress plays Katniss Everdeen in 'The Hunger Games'?\nA. Emma Stone\nB. Jennifer Lawrence\nC. Shailene Woodley\nD. Emma Watson",
+            "target": "B",
+            "metadata": {
+                "topic": "movies"
+            }
+        },
+        {
+            "id": 41,
+            "input": "The viral video 'Charlie Bit My Finger' was first uploaded to which platform?\nA. TikTok\nB. Instagram\nC. YouTube\nD. Vine",
+            "target": "C",
+            "metadata": {
+                "topic": "internet_culture"
+            }
+        },
+        {
+            "id": 42,
+            "input": "Which rapper's real name is Aubrey Graham?\nA. Kendrick Lamar\nB. Drake\nC. J. Cole\nD. Big Sean",
+            "target": "B",
+            "metadata": {
+                "topic": "music"
+            }
+        },
+        {
+            "id": 43,
+            "input": "In internet slang, 'periodt' is used to:\nA. Start a conversation\nB. Ask a question\nC. Emphasize a point/end of discussion\nD. Show confusion",
+            "target": "C",
+            "metadata": {
+                "topic": "internet_culture"
+            }
+        },
+        {
+            "id": 44,
+            "input": "Which TV series is set in the fictional town of Hawkins, Indiana?\nA. Dark\nB. Stranger Things\nC. The X-Files\nD. Twin Peaks",
+            "target": "B",
+            "metadata": {
+                "topic": "television"
+            }
+        },
+        {
+            "id": 45,
+            "input": "The social media challenge that involved dumping ice water on oneself was called:\nA. The Mannequin Challenge\nB. The Ice Bucket Challenge\nC. The Harlem Shake\nD. The Cinnamon Challenge",
+            "target": "B",
+            "metadata": {
+                "topic": "internet_culture"
+            }
+        },
+        {
+            "id": 46,
+            "input": "Which streaming platform produces 'The Boys'?\nA. Netflix\nB. Hulu\nC. Amazon Prime Video\nD. HBO Max",
+            "target": "C",
+            "metadata": {
+                "topic": "television"
+            }
+        },
+        {
+            "id": 47,
+            "input": "The term 'stan' comes from which Eminem song?\nA. Lose Yourself\nB. The Real Slim Shady\nC. Stan\nD. Without Me",
+            "target": "C",
+            "metadata": {
+                "topic": "music"
+            }
+        },
+        {
+            "id": 48,
+            "input": "Which social media platform is owned by Meta (formerly Facebook)?\nA. TikTok\nB. Twitter\nC. Instagram\nD. Snapchat",
+            "target": "C",
+            "metadata": {
+                "topic": "social_media"
+            }
+        },
+        {
+            "id": 49,
+            "input": "The movie 'Top Gun: Maverick' is a sequel to the original 'Top Gun' from which decade?\nA. 1970s\nB. 1980s\nC. 1990s\nD. 2000s",
+            "target": "B",
+            "metadata": {
+                "topic": "movies"
+            }
+        },
+        {
+            "id": 50,
+            "input": "In Gen Z slang, 'no cap' means:\nA. No hat\nB. No lie/telling the truth\nC. No money\nD. No problem",
+            "target": "B",
+            "metadata": {
+                "topic": "internet_culture"
+            }
+        }
+    ]
+}

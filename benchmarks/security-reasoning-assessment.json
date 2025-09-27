@@ -1,5 +1,5 @@
 {
-    "name": "Automated Security Reasoning Assessment (ASRA)",
+    "name": "Security Reasoning Assessment",
     "author": "Christopher Woodall",
     "revision": "1",
     "description": "This benchmark evaluates an AI agent's ability to reason and perform tasks within a modern DevSecOps context. It presents the agent with a series of realistic scenarios and technical challenges designed to rigorously test its proficiency across six core domains: Automation, Codification, Architecture, Observability, Adversarial-Thinking, and Pragmatism. The goal is to measure the agent's practical effectiveness as a collaborative partner in a fast-paced, security-conscious software development environment, assessing its ability to provide solutions that are not only technically correct but also actionable and context-aware.",

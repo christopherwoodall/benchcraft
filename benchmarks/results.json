@@ -1434,5 +1434,1082 @@
             }
         ],
         "duration": 3.4442126750946045
+    },
+    {
+        "timestamp": "2025-09-27T04:39:55.768508+00:00",
+        "benchmark_name": "Pop Culture Knowledge Assessment",
+        "model": "moonshotai/kimi-k2",
+        "accuracy": 100.0,
+        "details": [
+            {
+                "id": 1,
+                "topic": "music",
+                "target": "A",
+                "response": "A",
+                "is_correct": true
+            },
+            {
+                "id": 2,
+                "topic": "movies",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 3,
+                "topic": "television",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 4,
+                "topic": "internet_culture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 5,
+                "topic": "music",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 6,
+                "topic": "television",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 7,
+                "topic": "movies",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 8,
+                "topic": "television",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 9,
+                "topic": "music",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 10,
+                "topic": "internet_culture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 11,
+                "topic": "television",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 12,
+                "topic": "gaming",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 13,
+                "topic": "music",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 14,
+                "topic": "television",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 15,
+                "topic": "social_media",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 16,
+                "topic": "television",
+                "target": "D",
+                "response": "D",
+                "is_correct": true
+            },
+            {
+                "id": 17,
+                "topic": "celebrities",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 18,
+                "topic": "internet_culture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 19,
+                "topic": "social_media",
+                "target": "A",
+                "response": "A",
+                "is_correct": true
+            },
+            {
+                "id": 20,
+                "topic": "movies",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 21,
+                "topic": "television",
+                "target": "A",
+                "response": "A",
+                "is_correct": true
+            },
+            {
+                "id": 22,
+                "topic": "internet_culture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 23,
+                "topic": "music",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 24,
+                "topic": "television",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 25,
+                "topic": "social_media",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 26,
+                "topic": "movies",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 27,
+                "topic": "television",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 28,
+                "topic": "internet_culture",
+                "target": "A",
+                "response": "A",
+                "is_correct": true
+            },
+            {
+                "id": 29,
+                "topic": "music",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 30,
+                "topic": "internet_culture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 31,
+                "topic": "television",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 32,
+                "topic": "music",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 33,
+                "topic": "social_media",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 34,
+                "topic": "television",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 35,
+                "topic": "internet_culture",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 36,
+                "topic": "movies",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 37,
+                "topic": "social_media",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 38,
+                "topic": "music",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 39,
+                "topic": "internet_culture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 40,
+                "topic": "movies",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 41,
+                "topic": "internet_culture",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 42,
+                "topic": "music",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 43,
+                "topic": "internet_culture",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 44,
+                "topic": "television",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 45,
+                "topic": "internet_culture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 46,
+                "topic": "television",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 47,
+                "topic": "music",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 48,
+                "topic": "social_media",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 49,
+                "topic": "movies",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 50,
+                "topic": "internet_culture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            }
+        ],
+        "duration": 5.690455436706543
+    },
+    {
+        "timestamp": "2025-09-27T04:40:46.398848+00:00",
+        "benchmark_name": "Pop Culture Knowledge Assessment",
+        "model": "anthropic/claude-sonnet-4",
+        "accuracy": 100.0,
+        "details": [
+            {
+                "id": 1,
+                "topic": "music",
+                "target": "A",
+                "response": "A",
+                "is_correct": true
+            },
+            {
+                "id": 2,
+                "topic": "movies",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 3,
+                "topic": "television",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 4,
+                "topic": "internet_culture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 5,
+                "topic": "music",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 6,
+                "topic": "television",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 7,
+                "topic": "movies",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 8,
+                "topic": "television",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 9,
+                "topic": "music",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 10,
+                "topic": "internet_culture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 11,
+                "topic": "television",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 12,
+                "topic": "gaming",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 13,
+                "topic": "music",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 14,
+                "topic": "television",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 15,
+                "topic": "social_media",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 16,
+                "topic": "television",
+                "target": "D",
+                "response": "D",
+                "is_correct": true
+            },
+            {
+                "id": 17,
+                "topic": "celebrities",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 18,
+                "topic": "internet_culture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 19,
+                "topic": "social_media",
+                "target": "A",
+                "response": "A",
+                "is_correct": true
+            },
+            {
+                "id": 20,
+                "topic": "movies",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 21,
+                "topic": "television",
+                "target": "A",
+                "response": "A",
+                "is_correct": true
+            },
+            {
+                "id": 22,
+                "topic": "internet_culture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 23,
+                "topic": "music",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 24,
+                "topic": "television",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 25,
+                "topic": "social_media",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 26,
+                "topic": "movies",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 27,
+                "topic": "television",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 28,
+                "topic": "internet_culture",
+                "target": "A",
+                "response": "A",
+                "is_correct": true
+            },
+            {
+                "id": 29,
+                "topic": "music",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 30,
+                "topic": "internet_culture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 31,
+                "topic": "television",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 32,
+                "topic": "music",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 33,
+                "topic": "social_media",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 34,
+                "topic": "television",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 35,
+                "topic": "internet_culture",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 36,
+                "topic": "movies",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 37,
+                "topic": "social_media",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 38,
+                "topic": "music",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 39,
+                "topic": "internet_culture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 40,
+                "topic": "movies",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 41,
+                "topic": "internet_culture",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 42,
+                "topic": "music",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 43,
+                "topic": "internet_culture",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 44,
+                "topic": "television",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 45,
+                "topic": "internet_culture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 46,
+                "topic": "television",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 47,
+                "topic": "music",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 48,
+                "topic": "social_media",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 49,
+                "topic": "movies",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 50,
+                "topic": "internet_culture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            }
+        ],
+        "duration": 2.672471284866333
+    },
+    {
+        "timestamp": "2025-09-27T04:42:19.511049+00:00",
+        "benchmark_name": "Pop Culture Knowledge Assessment",
+        "model": "google/gemini-2.5-flash",
+        "accuracy": 98.0,
+        "details": [
+            {
+                "id": 1,
+                "topic": "music",
+                "target": "A",
+                "response": "A",
+                "is_correct": true
+            },
+            {
+                "id": 2,
+                "topic": "movies",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 3,
+                "topic": "television",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 4,
+                "topic": "internet_culture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 5,
+                "topic": "music",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 6,
+                "topic": "television",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 7,
+                "topic": "movies",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 8,
+                "topic": "television",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 9,
+                "topic": "music",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 10,
+                "topic": "internet_culture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 11,
+                "topic": "television",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 12,
+                "topic": "gaming",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 13,
+                "topic": "music",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 14,
+                "topic": "television",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 15,
+                "topic": "social_media",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 16,
+                "topic": "television",
+                "target": "D",
+                "response": "D",
+                "is_correct": true
+            },
+            {
+                "id": 17,
+                "topic": "celebrities",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 18,
+                "topic": "internet_culture",
+                "target": "B",
+                "response": "A",
+                "is_correct": false
+            },
+            {
+                "id": 19,
+                "topic": "social_media",
+                "target": "A",
+                "response": "A",
+                "is_correct": true
+            },
+            {
+                "id": 20,
+                "topic": "movies",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 21,
+                "topic": "television",
+                "target": "A",
+                "response": "A",
+                "is_correct": true
+            },
+            {
+                "id": 22,
+                "topic": "internet_culture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 23,
+                "topic": "music",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 24,
+                "topic": "television",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 25,
+                "topic": "social_media",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 26,
+                "topic": "movies",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 27,
+                "topic": "television",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 28,
+                "topic": "internet_culture",
+                "target": "A",
+                "response": "A",
+                "is_correct": true
+            },
+            {
+                "id": 29,
+                "topic": "music",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 30,
+                "topic": "internet_culture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 31,
+                "topic": "television",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 32,
+                "topic": "music",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 33,
+                "topic": "social_media",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 34,
+                "topic": "television",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 35,
+                "topic": "internet_culture",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 36,
+                "topic": "movies",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 37,
+                "topic": "social_media",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 38,
+                "topic": "music",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 39,
+                "topic": "internet_culture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 40,
+                "topic": "movies",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 41,
+                "topic": "internet_culture",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 42,
+                "topic": "music",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 43,
+                "topic": "internet_culture",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 44,
+                "topic": "television",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 45,
+                "topic": "internet_culture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 46,
+                "topic": "television",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 47,
+                "topic": "music",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 48,
+                "topic": "social_media",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 49,
+                "topic": "movies",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 50,
+                "topic": "internet_culture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            }
+        ],
+        "duration": 1.7961995601654053
     }
 ]
