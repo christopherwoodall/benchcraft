@@ -9,7 +9,7 @@ def main():
 
     subparsers = parser.add_subparsers(dest="command")
 
-    server_parser = subparsers.add_parser("server", help="Start the webserver")
+    server_parser = subparsers.add_parser("serve", help="Start the webserver")
     server_parser.set_defaults(func=benchcraft.server.main)
 
     # TODO

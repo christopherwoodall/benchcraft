@@ -1,14 +1,13 @@
 import os
+import re
 import json
-from flask import Blueprint, render_template, request, jsonify
 import time
 import asyncio
+from flask import Blueprint, jsonify, request, render_template
+from openai import APIError, AsyncOpenAI
+from typing import Any, Dict, List
 from datetime import datetime, timezone
-import re
-from openai import AsyncOpenAI, APIError
 from collections import defaultdict
-from tqdm.asyncio import tqdm_asyncio
-from typing import List, Dict, Any
 
 
 run_blueprint = Blueprint("run", __name__, template_folder="templates")
@@ -188,7 +187,7 @@ def run_benchmark():
         save_results(all_results)
 
         return run_record
-    
+
     try:
         run_record = asyncio.run(run_eval())
         return jsonify({"message": "Eval completed.", "result": run_record})
