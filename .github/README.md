@@ -13,7 +13,7 @@ Open your browser and navigate to `http://localhost:5000`
 
 
 ## Create
-![benchcraft screenshot](https://github.com/christopherwoodall/benchcraft/blob/main/.github/docs/image.png?raw=true)
+![benchcraft screenshot](https://github.com/christopherwoodall/benchcraft/blob/main/.github/docs/create.png?raw=true)
 
 
 ## Run
