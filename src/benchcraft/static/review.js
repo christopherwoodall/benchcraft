@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             color: '#e5e7eb'
                         },
                         ticks: {
-                           display: false
+                            display: false
                         },
                         suggestedMin: 0,
                         suggestedMax: 100
