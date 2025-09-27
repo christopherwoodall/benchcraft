@@ -12,23 +12,25 @@ def main():
     server_parser = subparsers.add_parser("server", help="Start the webserver")
     server_parser.set_defaults(func=benchcraft.server.main)
 
-    agent_parser = subparsers.add_parser("agent", help="Start the agent")
-    agent_parser.set_defaults(func=benchcraft.agent.main)
-
-    agent_parser.add_argument(
-        "--config",
-        type=str,
-        default="benchmarks/example_eval.json",
-        help="Path to the configuration file",
-    )
+    # # # TODO
+    # # import benchcraft_runner
+    # # print(benchcraft_runner.MultipleChoice)
+    # agent_parser = subparsers.add_parser("agent", help="Start the agent")
+    # agent_parser.set_defaults(func=benchcraft.agents.main)
+    # agent_parser.add_argument(
+    #     "--config",
+    #     type=str,
+    #     default="benchmarks/example_eval.json",
+    #     help="Path to the configuration file",
+    # )
 
     args = parser.parse_args()
 
     if hasattr(args, "func"):
-        if args.func == benchcraft.agent.main:
-            args.func(args.config)
-        else:
-            args.func()
+        # if args.func == benchcraft.agent.main:
+        #     args.func(args.config)
+        # else:
+        args.func()
     else:
         parser.print_help()
 
