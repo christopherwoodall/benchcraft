@@ -4,12 +4,7 @@ from flask import Blueprint, render_template, request, jsonify
 import time
 import asyncio
 from datetime import datetime, timezone
-from openai import AsyncOpenAI
-import os
-import json
-import asyncio
 import re
-import time
 from openai import AsyncOpenAI, APIError
 from collections import defaultdict
 from tqdm.asyncio import tqdm_asyncio
@@ -189,11 +184,13 @@ def run_benchmark():
             "duration": duration,
         }
         all_results.append(run_record)
+
         save_results(all_results)
 
+        return run_record
+    
     try:
         run_record = asyncio.run(run_eval())
-        print(run_record)
         return jsonify({"message": "Eval completed.", "result": run_record})
     except Exception as e:
         return jsonify({"error": str(e)}), 500

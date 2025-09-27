@@ -16,7 +16,7 @@ if not os.path.exists(BENCHMARKS_DIR):
 
 if not os.path.exists(RESULTS_FILE):
     with open(RESULTS_FILE, "w") as f:
-        json.dump({}, f)
+        json.dump([], f)
 
 
 # Helper: Sanitize filenames

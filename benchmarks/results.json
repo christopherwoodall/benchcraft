@@ -1075,5 +1075,364 @@
             }
         ],
         "duration": 1.3425087928771973
+    },
+    {
+        "timestamp": "2025-09-27T04:28:38.545328+00:00",
+        "benchmark_name": "Automated Security Reasoning Assessment (ASRA)",
+        "model": "anthropic/claude-sonnet-4",
+        "accuracy": 100.0,
+        "details": [
+            {
+                "id": 1,
+                "topic": "foundations",
+                "target": "D",
+                "response": "D",
+                "is_correct": true
+            },
+            {
+                "id": 2,
+                "topic": "foundations",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 3,
+                "topic": "foundations",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 4,
+                "topic": "foundations",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 5,
+                "topic": "foundations",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 6,
+                "topic": "foundations",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 7,
+                "topic": "foundations",
+                "target": "D",
+                "response": "D",
+                "is_correct": true
+            },
+            {
+                "id": 8,
+                "topic": "automation",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 9,
+                "topic": "automation",
+                "target": "D",
+                "response": "D",
+                "is_correct": true
+            },
+            {
+                "id": 10,
+                "topic": "automation",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 11,
+                "topic": "automation",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 12,
+                "topic": "automation",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 13,
+                "topic": "automation",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 14,
+                "topic": "automation",
+                "target": "D",
+                "response": "D",
+                "is_correct": true
+            },
+            {
+                "id": 15,
+                "topic": "codification",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 16,
+                "topic": "codification",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 17,
+                "topic": "codification",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 18,
+                "topic": "codification",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 19,
+                "topic": "codification",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 20,
+                "topic": "codification",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 21,
+                "topic": "codification",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 22,
+                "topic": "architecture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 23,
+                "topic": "architecture",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 24,
+                "topic": "architecture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 25,
+                "topic": "architecture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 26,
+                "topic": "architecture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 27,
+                "topic": "architecture",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 28,
+                "topic": "architecture",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 29,
+                "topic": "observability",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 30,
+                "topic": "observability",
+                "target": "A",
+                "response": "A",
+                "is_correct": true
+            },
+            {
+                "id": 31,
+                "topic": "observability",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 32,
+                "topic": "observability",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 33,
+                "topic": "observability",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 34,
+                "topic": "observability",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 35,
+                "topic": "observability",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 36,
+                "topic": "adversarial-thinking",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 37,
+                "topic": "adversarial-thinking",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 38,
+                "topic": "adversarial-thinking",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 39,
+                "topic": "adversarial-thinking",
+                "target": "A",
+                "response": "A",
+                "is_correct": true
+            },
+            {
+                "id": 40,
+                "topic": "adversarial-thinking",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 41,
+                "topic": "adversarial-thinking",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 42,
+                "topic": "adversarial-thinking",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 43,
+                "topic": "adversarial-thinking",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 44,
+                "topic": "pragmatism",
+                "target": "A",
+                "response": "A",
+                "is_correct": true
+            },
+            {
+                "id": 45,
+                "topic": "pragmatism",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 46,
+                "topic": "pragmatism",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 47,
+                "topic": "pragmatism",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 48,
+                "topic": "pragmatism",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            },
+            {
+                "id": 49,
+                "topic": "pragmatism",
+                "target": "C",
+                "response": "C",
+                "is_correct": true
+            },
+            {
+                "id": 50,
+                "topic": "pragmatism",
+                "target": "B",
+                "response": "B",
+                "is_correct": true
+            }
+        ],
+        "duration": 3.4442126750946045
     }
 ]
