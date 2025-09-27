@@ -1,7 +1,4 @@
-import os
-import json
-import re
-from flask import Flask, render_template, request, jsonify
+from flask import Flask
 import benchcraft
 
 
@@ -13,8 +10,25 @@ def main():
         static_url_path="/static",
     )
 
-    app.register_blueprint(benchcraft.routes.views.views_blueprint)
-    app.register_blueprint(benchcraft.routes.api.api_blueprint)
+    app.register_blueprint(
+        benchcraft.www.api.api.api_blueprint,
+        url_prefix="/api",
+    )
+
+    app.register_blueprint(
+        benchcraft.www.create.create.create_blueprint,
+        url_prefix="/",
+    )
+
+    app.register_blueprint(
+        benchcraft.www.run.run.run_blueprint,
+        url_prefix="/run",
+    )
+
+    app.register_blueprint(
+        benchcraft.www.review.review.review_blueprint,
+        url_prefix="/review",
+    )
 
     app.run(debug=True)
 

@@ -1,102 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>benchcraft</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .sidebar-item:hover { background-color: #374151; }
-        .sidebar-item.active { background-color: #4f46e5; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #1f2937; }
-        ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #6b7280; }
-    </style>
-</head>
-<body class="bg-gray-900 text-white">
-    <div class="flex h-screen">
-        <aside class="w-64 bg-gray-800 p-4 overflow-y-auto flex flex-col">
-            <div>
-                <h1 class="text-xl font-bold mb-4">Benchmarks</h1>
-                <button id="new-benchmark-btn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg mb-4 transition duration-200">
-                    + New Benchmark
-                </button>
-                <nav id="benchmark-list" class="space-y-2"></nav>
-            </div>
-            <div class="mt-auto pt-4">
-                 <a href="/run" class="w-full text-center block bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200 mb-2">
-                    Run &rarr;
-                </a>
-                <a href="/review" class="w-full text-center block bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200">
-                    Review &rarr;
-                </a>
-            </div>
-        </aside>
-
-        <main class="flex-1 p-8 overflow-y-auto">
-            <div class="max-w-4xl mx-auto">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 id="form-title" class="text-3xl font-bold">New Evaluation</h2>
-                    <div>
-                        <button id="delete-benchmark-btn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200 hidden">Delete</button>
-                        <button id="save-benchmark-btn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200 ml-2">Save</button>
-                    </div>
-                </div>
-
-                <input type="hidden" id="current-filename">
-
-                <div class="bg-gray-800 p-6 rounded-lg mb-6">
-                    <h3 class="text-xl font-semibold mb-4 border-b border-gray-700 pb-2">Metadata</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <label for="benchmark-name" class="block text-sm font-medium text-gray-300">Eval Name</label>
-                            <input type="text" id="benchmark-name" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2">
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                             <div>
-                                <label for="author" class="block text-sm font-medium text-gray-300">Author</label>
-                                <input type="text" id="author" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2">
-                            </div>
-                            <div>
-                                <label for="revision" class="block text-sm font-medium text-gray-300">Revision</label>
-                                <input type="text" id="revision" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2">
-                            </div>
-                        </div>
-                        <div>
-                            <label for="benchmark-desc" class="block text-sm font-medium text-gray-300">Description</label>
-                            <textarea id="benchmark-desc" rows="3" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2"></textarea>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-gray-800 p-6 rounded-lg mb-6">
-                    <h3 class="text-xl font-semibold mb-4 border-b border-gray-700 pb-2">Shared System Prompt</h3>
-                    <div>
-                        <label for="system-prompt" class="block text-sm font-medium text-gray-300 mb-2">This prompt will be applied to all questions in this evaluation.</label>
-                        <textarea id="system-prompt" rows="4" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2" placeholder="e.g., You are a helpful assistant."></textarea>
-                    </div>
-                </div>
-
-                <div class="bg-gray-800 p-6 rounded-lg">
-                    <div class="flex justify-between items-center mb-4 border-b border-gray-700 pb-2">
-                        <h3 class="text-xl font-semibold">Evaluation Questions</h3>
-                        <button id="add-prompt-btn" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-1 px-3 rounded-lg text-sm transition duration-200">+ Add Question</button>
-                    </div>
-                    <div id="prompts-list" class="space-y-4">
-                        </div>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <div id="toast" class="fixed bottom-5 right-5 bg-gray-800 text-white py-2 px-4 rounded-lg shadow-lg transition-opacity duration-300 opacity-0">
-        <p id="toast-message"></p>
-    </div>
-
-<script>
 document.addEventListener('DOMContentLoaded', () => {
     const benchmarkList = document.getElementById('benchmark-list');
     const saveBtn = document.getElementById('save-benchmark-btn');
@@ -104,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const deleteBtn = document.getElementById('delete-benchmark-btn');
     const addPromptBtn = document.getElementById('add-prompt-btn');
     const promptsList = document.getElementById('prompts-list');
-    
+
     const form = {
         name: document.getElementById('benchmark-name'),
         description: document.getElementById('benchmark-desc'),
@@ -112,7 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
         revision: document.getElementById('revision'),
         systemPrompt: document.getElementById('system-prompt'),
         currentFilename: document.getElementById('current-filename'),
-        formTitle: document.getElementById('form-title')
+        formTitle: document.getElementById('form-title'),
+        evaluationType: document.getElementById('evaluation-type'),
     };
 
     // --- Utility Functions ---
@@ -152,14 +54,14 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         deleteBenchmark: async (filename) => {
             const response = await fetch(`/api/benchmarks/${filename}`, { method: 'DELETE' });
-             if (!response.ok) {
+            if (!response.ok) {
                 const error = await response.json();
                 throw new Error(error.error || 'Failed to delete benchmark.');
             }
             return response.json();
         }
     };
-    
+
     // --- UI Rendering ---
     const renderBenchmarkList = async () => {
         try {
@@ -180,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const createPromptElement = (input = '', target = '', choices = '', metadata = {}) => {
+    const createPromptElement = (input = '', target = '', metadata = {}) => {
         const div = document.createElement('div');
         div.className = 'p-4 bg-gray-700 rounded-lg prompt-pair';
         div.innerHTML = `
@@ -191,8 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="space-y-2">
                 <textarea rows="3" placeholder="Input / Prompt" class="sample-input w-full bg-gray-600 rounded-md p-2 text-sm">${input}</textarea>
                 <textarea rows="3" placeholder="Target / Ideal Answer" class="sample-target w-full bg-gray-600 rounded-md p-2 text-sm">${target}</textarea>
-                <input type="text" placeholder="Choices (comma separated)" value="${choices}" class="sample-choices w-full bg-gray-600 rounded-md p-2 text-sm">
-
+                
                 <div class="metadata-section bg-gray-800 p-2 rounded-md">
                     <div class="flex justify-between items-center mb-2">
                         <span class="text-gray-300 text-sm font-semibold">Metadata</span>
@@ -202,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </div>
         `;
-        
+
         const metadataList = div.querySelector('.metadata-list');
         const addBtn = div.querySelector('.add-metadata-btn');
 
@@ -238,7 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
         form.author.value = data.author || '';
         form.revision.value = data.revision || '';
         form.systemPrompt.value = data.systemPrompt || '';
-        
+        form.evaluationType.value = data.evaluationType || 'multiple_choice';
+
         // Clear and rebuild sample fields
         promptsList.innerHTML = '';
         if (data.samples) {
@@ -246,7 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 createPromptElement(
                     s.input || '',
                     s.target || '',
-                    s.choices ? s.choices.join(', ') : '',
                     s.metadata || {}
                 );
             });
@@ -257,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         form.formTitle.textContent = `Editing: ${data.name}`;
         deleteBtn.classList.remove('hidden');
     };
-    
+
     const clearForm = () => {
         form.name.value = '';
         form.description.value = '';
@@ -299,9 +200,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const samples = Array.from(document.querySelectorAll('.prompt-pair')).map((div, i) => {
             const input = div.querySelector('.sample-input').value;
             const target = div.querySelector('.sample-target').value;
-            const rawChoices = div.querySelector('.sample-choices').value;
-
-            let choices = rawChoices ? rawChoices.split(',').map(c => c.trim()) : null;
 
             // Collect metadata rows
             const metadataRows = div.querySelectorAll('.metadata-list .flex');
@@ -317,7 +215,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 id: i + 1,
                 input,
                 target,
-                choices,
                 metadata,
                 files: null,
                 setup: null
@@ -334,10 +231,11 @@ document.addEventListener('DOMContentLoaded', () => {
             description: form.description.value,
             author: form.author.value,
             revision: form.revision.value,
+            evaluationType: form.evaluationType.value,
             systemPrompt: form.systemPrompt.value,
             samples
         };
-        
+
         try {
             const result = await api.saveBenchmark(data);
             form.currentFilename.value = result.filename;
@@ -364,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
             showToast(error.message, true);
         }
     };
-    
+
     // --- Event Listeners Setup ---
     benchmarkList.addEventListener('click', (e) => {
         if (e.target.matches('.sidebar-item')) {
@@ -385,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     deleteBtn.addEventListener('click', handleDeleteBenchmark);
     addPromptBtn.addEventListener('click', () => createPromptElement());
-    
+
     // --- Initial Load ---
     const initialize = async () => {
         await renderBenchmarkList();
@@ -394,6 +292,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initialize();
 });
-</script>
-</body>
-</html>

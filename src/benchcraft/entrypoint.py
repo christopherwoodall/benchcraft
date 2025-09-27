@@ -12,9 +12,7 @@ def main():
     server_parser = subparsers.add_parser("server", help="Start the webserver")
     server_parser.set_defaults(func=benchcraft.server.main)
 
-    # # # TODO
-    # # import benchcraft_runner
-    # # print(benchcraft_runner.MultipleChoice)
+    # TODO
     # agent_parser = subparsers.add_parser("agent", help="Start the agent")
     # agent_parser.set_defaults(func=benchcraft.agents.main)
     # agent_parser.add_argument(

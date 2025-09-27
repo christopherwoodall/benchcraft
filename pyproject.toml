@@ -25,6 +25,7 @@ dependencies = [
     "openai",
     "tqdm",
     "sqlalchemy",
+    "asyncio",
 ]
 
 [project.optional-dependencies]

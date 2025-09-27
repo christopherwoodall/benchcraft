@@ -17,6 +17,7 @@ Open your browser and navigate to `http://localhost:5000`
 
 
 ## Run
-
+![benchcraft screenshot](https://github.com/christopherwoodall/benchcraft/blob/main/.github/docs/run.png?raw=true)
 
 ## Review
+WIP
