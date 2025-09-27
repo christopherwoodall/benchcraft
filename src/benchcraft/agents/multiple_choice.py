@@ -1,13 +1,14 @@
 import os
-import json
-import asyncio
 import re
+import json
 import time
+import asyncio
 import argparse
-from openai import AsyncOpenAI, APIError
+from openai import APIError, AsyncOpenAI
+from typing import Any, Dict, List
 from collections import defaultdict
 from tqdm.asyncio import tqdm_asyncio
-from typing import List, Dict, Any
+
 
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 

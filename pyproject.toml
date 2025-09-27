@@ -8,7 +8,7 @@ benchcraft = "benchcraft.entrypoint:main"
 
 [project]
 requires-python = ">=3.10"
-version = "0.0.2"
+version = "0.0.3"
 name        = "benchcraft"
 description = "Craft and run benchmarks."
 readme      = ".github/README.md"

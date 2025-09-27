@@ -1,7 +1,7 @@
 import os
-import json
 import re
-from flask import Blueprint, request, jsonify
+import json
+from flask import Blueprint, jsonify, request
 
 
 api_blueprint = Blueprint("api", __name__)

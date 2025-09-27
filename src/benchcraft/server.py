@@ -1,5 +1,5 @@
-from flask import Flask
 import benchcraft
+from flask import Flask
 
 
 def main():
